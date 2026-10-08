@@ -1,4 +1,16 @@
 services:
+  frontend:
+    build: ./frontend
+    image: yeswanth/frontend:1.0.0
+    container_name: frontend
+    ports: 
+    - "8080:80"
+    depends_on:
+    - catalogue
+    - user
+    - cart
+    - shipping
+    - payment
   catalogue:
     build: ./catalogue
     image: yeswanth/catalogue:1.0.0
