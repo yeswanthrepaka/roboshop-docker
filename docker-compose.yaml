@@ -2,7 +2,7 @@ services:
   frontend:
     build: ./frontend
     image: yeswanth/frontend:1.0.0
-    container_name: frontend
+    container_name: frontend_new
     ports: 
     - "8080:80"
     depends_on:
@@ -14,34 +14,34 @@ services:
   catalogue:
     build: ./catalogue
     image: yeswanth/catalogue:1.0.0
-    container_name: catalogue
+    container_name: catalogue_new
     depends_on:
     - mongodb
   user:
     build: ./user
     image: yeswanth/user:1.0.0
-    container_name: user
+    container_name: user_new
     depends_on:
     - mongodb
     - redis
   cart: 
     build: ./cart
     image: yeswanth/cart:1.0.0
-    container_name: cart
+    container_name: cart_new
     depends_on:
     - catalogue
     - redis
   shipping:
     build: ./shipping
     image: yeswanth/shipping:1.0.0
-    container_name: shipping
+    container_name: shipping_new
     depends_on:
     - cart
     - mysql
   payment:
     build: ./payment
     image: yeswanth/payment:1.0.0
-    container_name: payment
+    container_name: payment_new
     depends_on:
     - cart
     - user
@@ -49,19 +49,19 @@ services:
   mongodb:
     build: ./mongodb
     image: yeswanth/mongodb:1.0.0
-    container_name: mongodb
+    container_name: mongodb_new
   redis:
     image: redis:7.0
-    container_name: redis
+    container_name: redis_new
   mysql:
     build: /mysql
     image: yeswanth/mysql:1.0.0
-    container_name: mysql
+    container_name: mysql_new
     environment: 
       MYSQL_ROOT_PASSWORD: "RoboShop@1"
   rabbitmq: 
     image: rabbitmq:3
-    container_name: rabbitmq
+    container_name: rabbitmq_new
     environment: 
       RABBITMQ_DEFAULT_USER: "roboshop"
       RABBITMQ_DEFAULT_PASS: "roboshop123"
