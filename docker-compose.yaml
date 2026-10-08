@@ -1,0 +1,63 @@
+services:
+  catalogue:
+    build: ./catalogue
+    image: yeswanth/catalogue:1.0.0
+    container_name: catalogue
+    depends_on:
+    - mongodb
+  user:
+    build: ./user
+    image: yeswanth/user:1.0.0
+    container_name: user
+    depends_on:
+    - mongodb
+    - redis
+  cart: 
+    build: ./cart
+    image: yeswanth/cart:1.0.0
+    container_name: cart
+    depends_on:
+    - catalogue
+    - redis
+  shipping:
+    build: ./shipping
+    image: yeswanth/shipping:1.0.0
+    container_name: shipping
+    depends_on:
+    - cart
+    - mysql
+  payment:
+    build: ./payment
+    image: yeswanth/payment:1.0.0
+    container_name: payment
+    depends_on:
+    - cart
+    - user
+    - rabbitmq
+  mongodb:
+    build: ./mongodb
+    image: yeswanth/mongodb:1.0.0
+    container_name: mongodb
+  redis:
+    image: redis:7.0
+    container_name: redis
+  mysql:
+    build: /mysql
+    image: yeswanth/mysql:1.0.0
+    container_name: mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: "RoboShop@1"
+  rabbitmq: 
+    image: rabbitmq:3
+    container_name: rabbitmq
+    environment: 
+      RABBITMQ_DEFAULT_USER: "roboshop"
+      RABBITMQ_DEFAULT_PASS: "roboshop123"
+
+networks:
+  default:
+    name: roboshopproject
+    driver: bridge
+    external: false
+
+    
