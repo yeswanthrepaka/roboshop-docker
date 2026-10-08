@@ -54,7 +54,7 @@ services:
     image: redis:7.0
     container_name: redis_new
   mysql:
-    build: /mysql
+    build: ./mysql
     image: yeswanth/mysql:1.0.0
     container_name: mysql_new
     environment: 
