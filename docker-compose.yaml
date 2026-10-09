@@ -1,10 +1,10 @@
 services:
   frontend:
     build: ./frontend
-    image: yeswanthrepaka/frontend:1.0.0
+    image: yeswanth/frontend:1.0.0
     container_name: frontend
     ports: 
-    - "8080:80"
+    - "80:80"
     depends_on:
     - catalogue
     - user
@@ -13,34 +13,34 @@ services:
     - payment
   catalogue:
     build: ./catalogue
-    image: yeswanthrepaka/catalogue:1.0.0
+    image: yeswanth/catalogue:1.0.0
     container_name: catalogue
     depends_on:
     - mongodb
   user:
     build: ./user
-    image: yeswanthrepaka/user:1.0.0
+    image: yeswanth/user:1.0.0
     container_name: user
     depends_on:
     - mongodb
     - redis
   cart: 
     build: ./cart
-    image: yeswanthrepaka/cart:1.0.0
+    image: yeswanth/cart:1.0.0
     container_name: cart
     depends_on:
     - catalogue
     - redis
   shipping:
     build: ./shipping
-    image: yeswanthrepaka/shipping:1.0.0
+    image: yeswanth/shipping:1.0.0
     container_name: shipping
     depends_on:
     - cart
     - mysql
   payment:
     build: ./payment
-    image: yeswanthrepaka/payment:1.0.0
+    image: yeswanth/payment:1.0.0
     container_name: payment
     depends_on:
     - cart
@@ -48,14 +48,14 @@ services:
     - rabbitmq
   mongodb:
     build: ./mongodb
-    image: yeswanthrepaka/mongodb:1.0.0
+    image: yeswanth/mongodb:1.0.0
     container_name: mongodb
   redis:
     image: redis:7.0
     container_name: redis
   mysql:
     build: ./mysql
-    image: yeswanthrepaka/mysql:1.0.0
+    image: yeswanth/mysql:1.0.0
     container_name: mysql
     environment: 
       MYSQL_ROOT_PASSWORD: "RoboShop@1"
@@ -68,7 +68,7 @@ services:
 
 networks:
   default:
-    name: roboshop
+    name: roboshopproject
     driver: bridge
     external: false
 
