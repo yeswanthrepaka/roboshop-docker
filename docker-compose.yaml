@@ -50,18 +50,26 @@ services:
     build: ./mongodb
     image: yeswanth/mongodb:1.0.0
     container_name: mongodb
+    volumes:
+    - mongodb:/data/db
   redis:
     image: redis:7.0
     container_name: redis
+    volumes:
+    - redis:/data
   mysql:
     build: ./mysql
     image: yeswanth/mysql:1.0.0
     container_name: mysql
+    volumes:
+    - mysql:/var/lib/mysql
     environment: 
       MYSQL_ROOT_PASSWORD: "RoboShop@1"
   rabbitmq: 
     image: rabbitmq:3
     container_name: rabbitmq
+    volumes:
+    - rabbitmq:/var/lib/rabbitmq
     environment: 
       RABBITMQ_DEFAULT_USER: "roboshop"
       RABBITMQ_DEFAULT_PASS: "roboshop123"
@@ -70,6 +78,10 @@ networks:
   default:
     name: roboshopproject
     driver: bridge
-    external: false
+    external: true
 
-    
+volumes:
+  mongodb:
+  redis:
+  mysql:
+  rabbitmq:
