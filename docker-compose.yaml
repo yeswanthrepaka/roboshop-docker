@@ -78,7 +78,7 @@ networks:
   default:
     name: roboshopproject
     driver: bridge
-    external: true
+    external: false
 
 volumes:
   mongodb:
