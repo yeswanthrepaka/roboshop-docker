@@ -1,4 +1,4 @@
-FROM node:20.20-alpine3.22
+FROM node:20
 WORKDIR /app
 COPY package.json .
 COPY *.js .
