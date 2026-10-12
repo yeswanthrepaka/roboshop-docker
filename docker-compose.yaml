@@ -76,7 +76,7 @@ services:
 
 networks:
   default:
-    name: roboshopproject
+    name: roboshop
     driver: bridge
     external: false
 
