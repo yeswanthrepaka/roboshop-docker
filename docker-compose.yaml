@@ -1,7 +1,7 @@
 services:
   frontend:
     build: ./frontend
-    image: yeswanth/frontend:1.0.0
+    image: yeswanthrepaka/frontend:1.2.0
     container_name: frontend
     ports: 
     - "80:80"
@@ -13,34 +13,34 @@ services:
     - payment
   catalogue:
     build: ./catalogue
-    image: yeswanth/catalogue:1.0.0
+    image: yeswanthrepaka/catalogue:1.2.0
     container_name: catalogue
     depends_on:
     - mongodb
   user:
     build: ./user
-    image: yeswanth/user:1.0.0
+    image: yeswanthrepaka/user:1.2.0
     container_name: user
     depends_on:
     - mongodb
     - redis
   cart: 
     build: ./cart
-    image: yeswanth/cart:1.0.0
+    image: yeswanthrepaka/cart:1.2.0
     container_name: cart
     depends_on:
     - catalogue
     - redis
   shipping:
     build: ./shipping
-    image: yeswanth/shipping:1.0.0
+    image: yeswanthrepaka/shipping:1.2.0
     container_name: shipping
     depends_on:
     - cart
     - mysql
   payment:
     build: ./payment
-    image: yeswanth/payment:1.0.0
+    image: yeswanthrepaka/payment:1.2.0
     container_name: payment
     depends_on:
     - cart
@@ -48,7 +48,7 @@ services:
     - rabbitmq
   mongodb:
     build: ./mongodb
-    image: yeswanth/mongodb:1.0.0
+    image: yeswanthrepaka/mongodb:1.2.0
     container_name: mongodb
     volumes:
     - mongodb:/data/db
@@ -59,7 +59,7 @@ services:
     - redis:/data
   mysql:
     build: ./mysql
-    image: yeswanth/mysql:1.0.0
+    image: yeswanthrepaka/mysql:1.2.0
     container_name: mysql
     volumes:
     - mysql:/var/lib/mysql
