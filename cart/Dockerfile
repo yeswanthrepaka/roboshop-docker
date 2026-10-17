@@ -13,9 +13,9 @@ RUN addgroup -S roboshop && adduser -S roboshop -G roboshop && \
     chown -R roboshop:roboshop /app
 USER roboshop
 # Managing env variables in k8s
-ENV REDIS_HOST="redis" \
-    CATALOGUE_HOST="catalogue" \
-    CATALOGUE_PORT="8080"
+# ENV REDIS_HOST="redis" \
+#     CATALOGUE_HOST="catalogue" \
+#     CATALOGUE_PORT="8080"
 ENTRYPOINT ["node"]
 CMD ["server.js"]
 

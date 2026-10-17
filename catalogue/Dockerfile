@@ -13,8 +13,8 @@ RUN addgroup -S roboshop && adduser -S roboshop -G roboshop && \
     chown -R roboshop:roboshop /app
 USER roboshop
 # Managing env variables in k8s
-ENV MONGO="true" \
-    MONGO_URL="mongodb://mongodb:27017/catalogue"
+# ENV MONGO="true" \
+#     MONGO_URL="mongodb://mongodb:27017/catalogue"
 CMD ["server.js"]
 ENTRYPOINT ["node"]
 

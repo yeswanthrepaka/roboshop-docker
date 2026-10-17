@@ -14,9 +14,10 @@ RUN addgroup -S roboshop && adduser -S roboshop -G roboshop && \
     chown -R roboshop:roboshop /app
 USER roboshop
 # Managing env variables in k8s
-ENV CART_ENDPOINT="cart:8080" \
-    DB_HOST="mysql"
-CMD ["java", "-jar", "shipping.jar"]
+# ENV CART_ENDPOINT="cart:8080" \
+#     DB_HOST="mysql"
+ENTRYPOINT ["java", "-jar", "shipping.jar"]
+
 
 
 # FROM maven:3.9.14
